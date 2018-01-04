@@ -12,6 +12,8 @@
 #ifndef MAME_OSD_EIGCCX86_H
 #define MAME_OSD_EIGCCX86_H
 
+#include "compiler_specifics.h"
+
 // Include MMX/SSE intrinsics headers
 
 #ifdef __SSE2__
