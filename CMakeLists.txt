@@ -28,9 +28,17 @@ if(WIN32)
 	add_definitions(-D_UNICODE -DUNICODE)
 endif()
 
-set(COMMON_SRC_FILES
+set(CORE_SRC_FILES
 	source/core/attotime.cpp
   source/core/attotime.h
+  source/core/delegate.cpp
+  source/core/delegate.h
+  source/core/devdelegate.cpp
+  source/core/devdelegate.h
 )
 
-add_executable(minimame ${COMMON_SRC_FILES})
+set(CORE_SRC_FILES
+	source/sdlmain.cpp
+)
+
+add_executable(minimame ${CORE_SRC_FILES} ${SRC_FILES})
