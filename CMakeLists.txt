@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
+add_subdirectory(boost-cmake)
+
 project(minimame)
 
 set(PROJECT_NAME "Mini Mame")
@@ -37,8 +39,14 @@ set(CORE_SRC_FILES
   source/core/devdelegate.h
 )
 
-set(CORE_SRC_FILES
+set(SRC_FILES
 	source/sdlmain.cpp
 )
 
-add_executable(minimame ${CORE_SRC_FILES} ${SRC_FILES})
+add_library(core, STATIC, ${CORE_SRC_FILES})
+
+add_executable(minimame ${SRC_FILES})
+target_link_libraries(minimame, core)
+
+include(BoostTestHelpers)
+add_boost_test(tests/emu/attotime.cpp core)
