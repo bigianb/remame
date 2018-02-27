@@ -1,12 +1,13 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.10)
 
-add_subdirectory(boost-cmake)
 
 project(minimame)
 
 set(PROJECT_NAME "Mini Mame")
 set(PROJECT_Version 0.1)
 set(PROJECT_LIBS)
+
+find_package(Boost)
 
 # flags
 set(CMAKE_CXX_STANDARD 14)
@@ -31,7 +32,7 @@ if(WIN32)
 endif()
 
 set(CORE_SRC_FILES
-	source/core/attotime.cpp
+  source/core/attotime.cpp
   source/core/attotime.h
   source/core/delegate.cpp
   source/core/delegate.h
@@ -40,13 +41,13 @@ set(CORE_SRC_FILES
 )
 
 set(SRC_FILES
-	source/sdlmain.cpp
+  source/sdlmain.cpp
 )
 
-add_library(core, STATIC, ${CORE_SRC_FILES})
+add_library(core STATIC ${CORE_SRC_FILES})
 
 add_executable(minimame ${SRC_FILES})
-target_link_libraries(minimame, core)
+target_link_libraries(minimame core)
 
-include(BoostTestHelpers)
+include(BoostTestHelpers.cmake)
 add_boost_test(tests/emu/attotime.cpp core)
