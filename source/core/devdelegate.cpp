@@ -20,8 +20,8 @@
 delegate_late_bind &device_delegate_helper::bound_object(device_t &search_root) const
 {
 	device_t *device = search_root.subdevice(m_device_name);
-	if (device == nullptr)
-		throw emu_fatalerror("Unable to locate device '%s' relative to '%s'\n", m_device_name, search_root.tag());
+//	if (device == nullptr)
+//		throw emu_fatalerror("Unable to locate device '%s' relative to '%s'\n", m_device_name, search_root.tag());
 	return *device;
 }
 

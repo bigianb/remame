@@ -12,6 +12,8 @@
 
 #include "delegate.h"
 
+class device_t;
+
 // device_delegate_helper does non-template work
 class device_delegate_helper
 {

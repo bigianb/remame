@@ -1,11 +1,10 @@
-#include "catch.hpp"
+#define BOOST_TEST_MODULE boost_test_macro_overview
+#include <boost/test/included/unit_test.hpp>
 
-#include "emucore.h"
-#include "eminline.h"
-#include "attotime.h"
+#include "../../source/core/attotime.h"
 
-TEST_CASE("convert 1 sec to attotime", "[emu]")
+BOOST_AUTO_TEST_CASE(test_macro_overview)
 {
    attotime value = attotime::from_seconds(1);
-   REQUIRE(value.as_attoseconds() == 1000000000000000000);
+   BOOST_CHECK(value.as_attoseconds() == 100000000000000000);
 }

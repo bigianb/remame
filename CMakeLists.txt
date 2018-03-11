@@ -8,6 +8,9 @@ set(PROJECT_Version 0.1)
 set(PROJECT_LIBS)
 
 find_package(Boost)
+if(Boost_FOUND)
+  include_directories(${Boost_INCLUDE_DIRS})
+endif()
 
 # flags
 set(CMAKE_CXX_STANDARD 14)
@@ -34,9 +37,9 @@ endif()
 set(CORE_SRC_FILES
   source/core/attotime.cpp
   source/core/attotime.h
-  source/core/delegate.cpp
+#  source/core/delegate.cpp
   source/core/delegate.h
-  source/core/devdelegate.cpp
+#  source/core/devdelegate.cpp
   source/core/devdelegate.h
 )
 
