@@ -3,11 +3,13 @@ cmake_minimum_required(VERSION 3.10)
 
 project(minimame)
 
+enable_testing()
+
 set(PROJECT_NAME "Mini Mame")
 set(PROJECT_Version 0.1)
 set(PROJECT_LIBS)
 
-find_package(Boost)
+find_package(Boost 1.66.0)
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif()

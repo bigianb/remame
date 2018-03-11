@@ -6,5 +6,5 @@
 BOOST_AUTO_TEST_CASE(test_macro_overview)
 {
    attotime value = attotime::from_seconds(1);
-   BOOST_CHECK(value.as_attoseconds() == 100000000000000000);
+   BOOST_CHECK(value.as_attoseconds() == 1000000000000000000);
 }
