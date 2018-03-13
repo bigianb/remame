@@ -13,6 +13,8 @@ before_script:
   - sudo apt-get install libboost-thread-dev libboost-system-dev libboost-test-dev
 
 script:
+     - export CC=gcc-7
+	 - export CXX=g++-7
      - mkdir -p build
      - cd build
      - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
