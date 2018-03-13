@@ -7,8 +7,6 @@ addons:
     packages:
       - g++-7
 
-before_install:
-	eval "CC=gcc-7 && CXX=g++-7"
 
 before_script:
   - sudo apt-get update -qq
