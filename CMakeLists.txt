@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.10)
+# travis has cmake 3.9
+cmake_minimum_required(VERSION 3.9)
 
 
 project(minimame)
@@ -9,7 +10,7 @@ set(PROJECT_NAME "Mini Mame")
 set(PROJECT_Version 0.1)
 set(PROJECT_LIBS)
 
-find_package(Boost 1.66.0)
+find_package(Boost)
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif()
