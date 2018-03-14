@@ -15,6 +15,7 @@ before_script:
   - sudo apt-get install libboost-thread-dev libboost-system-dev libboost-test-dev
 
 script:
+  - which gcov-7
   - export CC=gcc-7
   - export CXX=g++-7
   - mkdir -p build
@@ -24,4 +25,4 @@ script:
   - ctest
 
 after_success:
- - coveralls --verbose --gcov-options '\-lp'
+ - coveralls --verbose --gcov-options '\-lp' --gov gcov-7
