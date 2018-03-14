@@ -1,7 +1,6 @@
 # travis has cmake 3.9
 cmake_minimum_required(VERSION 3.9)
 
-
 project(minimame)
 
 enable_testing()
@@ -9,6 +8,8 @@ enable_testing()
 set(PROJECT_NAME "Mini Mame")
 set(PROJECT_Version 0.1)
 set(PROJECT_LIBS)
+
+set(COVERAGE OFF CACHE BOOL "Coverage")
 
 find_package(Boost)
 if(Boost_FOUND)
@@ -20,6 +21,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(WIN32)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc /MP")
+endif()
+if (COVERAGE)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
