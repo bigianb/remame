@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(test_div)
 {
 	attotime twoSecs = attotime::from_seconds(2);
     attotime sixSecs = attotime::from_seconds(6);
-    attotime val = twoSecs / 3;
+    attotime val = sixSecs / 3;
 	BOOST_CHECK(val == twoSecs);
 
     val = attotime::never / 3;
