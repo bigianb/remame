@@ -18,11 +18,9 @@ script:
   - which gcov-7
   - export CC=gcc-7
   - export CXX=g++-7
-  - mkdir -p build
-  - cd build
   - cmake -DCOVERAGE=1 -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON .. 
   - make
   - ctest
 
 after_success:
- - coveralls --verbose --gcov-options '\-lp' --gcov /usr/bin/gcov-7
+ - coveralls --verbose --gcov /usr/bin/gcov-7
