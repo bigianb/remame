@@ -25,4 +25,4 @@ script:
   - ctest
 
 after_success:
- - coveralls --verbose --gcov-options '\-lp' --gov gcov-7
+ - coveralls --verbose --gcov-options '\-lp' --gcov /usr/bin/gcov-7
