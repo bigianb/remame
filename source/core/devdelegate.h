@@ -11,8 +11,7 @@
 #pragma once
 
 #include "delegate.h"
-
-class device_t;
+#include "device.h"
 
 // device_delegate_helper does non-template work
 class device_delegate_helper

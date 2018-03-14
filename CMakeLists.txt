@@ -44,9 +44,9 @@ endif()
 set(CORE_SRC_FILES
   source/core/attotime.cpp
   source/core/attotime.h
-#  source/core/delegate.cpp
+  source/core/delegate.cpp
   source/core/delegate.h
-#  source/core/devdelegate.cpp
+  source/core/devdelegate.cpp
   source/core/devdelegate.h
 )
 
