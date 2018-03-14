@@ -18,7 +18,7 @@ script:
   - which gcov-7
   - export CC=gcc-7
   - export CXX=g++-7
-  - cmake -DCOVERAGE=1 -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON .. 
+  - cmake -DCOVERAGE=1 -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=ON . 
   - make
   - ctest
 
