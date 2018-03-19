@@ -81,6 +81,7 @@
 #include <utility>
 #include <functional>
 
+#include "emucore.h"	// for assert
 
 //**************************************************************************
 //  MACROS
