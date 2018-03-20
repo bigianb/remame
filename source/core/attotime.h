@@ -35,7 +35,7 @@
 #include <cstdint>
 #include <cassert>
 #include <cmath>
-#include "eminline.h"
+#include "fastmath.h"
 
 //**************************************************************************
 //  CONSTANTS
