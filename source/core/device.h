@@ -21,6 +21,8 @@
 #include "attotime.h"
 #include "emucore.h"
 
+class save_manager;
+
 //**************************************************************************
 //  MACROS
 //**************************************************************************
@@ -602,7 +604,7 @@ private:
 
 	// private state; accessor use required
 	running_machine *       m_machine;
-//	save_manager *          m_save;
+	save_manager *          m_save;
 	std::string             m_tag;                  // full tag for this instance
 	std::string             m_basetag;              // base part of the tag
 	bool                    m_config_complete;      // have we completed our configuration?
