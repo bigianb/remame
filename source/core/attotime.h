@@ -1,34 +1,7 @@
 // license:BSD-3-Clause
 // copyright-holders:Aaron Giles
 /**************************************************************************/
-/**
- * @file attotime.h
- * Support functions for working with attotime data.
- * @defgroup ATTOTIME
- * @{
- * Support functions for working with attotime data.
- *
- * @class attotime
- *  Attotime is an attosecond-accurate timing system implemented as
- *  96-bit integers.
- *
- *     1 second      = 1e0 seconds
- *     1 millisecond = 1e-3 seconds
- *     1 microsecond = 1e-6 seconds
- *     1 nanosecond  = 1e-9 seconds
- *     1 picosecond  = 1e-12 seconds
- *     1 femtosecond = 1e-15 seconds
- *     1 attosecond  = 1e-18 seconds
- *
- * This may seem insanely accurate, but it has its uses when multiple
- * clocks in the system are run by independent crystals. It is also
- * useful to compute the attotime for something small, say 1 clock tick,
- * and still have it be accurate and useful for scaling.
- *
- * Attotime consists of a 32-bit seconds count and a 64-bit attoseconds
- * count. Because the lower bits are kept as attoseconds and not as a
- * full 64-bit value, there is headroom to make some operations simpler.
- */
+
 /**************************************************************************/
 #pragma once
 
@@ -80,7 +53,28 @@ template <typename T> inline constexpr attoseconds_t ATTOSECONDS_IN_NSEC(T &&x) 
 //  TYPE DEFINITIONS
 //***************************************************************************/
 
-// the attotime structure itself
+/**
+ *
+ *  Attotime is an attosecond-accurate timing system implemented as
+ *  96-bit integers.
+ *
+ *     - 1 second      = 1e0 seconds
+ *     - 1 millisecond = 1e-3 seconds
+ *     - 1 microsecond = 1e-6 seconds
+ *     - 1 nanosecond  = 1e-9 seconds
+ *     - 1 picosecond  = 1e-12 seconds
+ *     - 1 femtosecond = 1e-15 seconds
+ *     - 1 attosecond  = 1e-18 seconds
+ *
+ * This may seem insanely accurate, but it has its uses when multiple
+ * clocks in the system are run by independent crystals. It is also
+ * useful to compute the attotime for something small, say 1 clock tick,
+ * and still have it be accurate and useful for scaling.
+ *
+ * Attotime consists of a 32-bit seconds count and a 64-bit attoseconds
+ * count. Because the lower bits are kept as attoseconds and not as a
+ * full 64-bit value, there is headroom to make some operations simpler.
+ */
 class attotime
 {
 public:
