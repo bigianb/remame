@@ -46,8 +46,11 @@ set(CORE_SRC_FILES
   source/core/attotime.h
   source/core/delegate.cpp
   source/core/delegate.h
-  source/core/devdelegate.cpp
-  source/core/devdelegate.h
+)
+
+set(EMUCORE_SRC_FILES
+  source/emucore/devdelegate.cpp
+  source/emucore/devdelegate.h
 )
 
 set(SRC_FILES
@@ -55,9 +58,10 @@ set(SRC_FILES
 )
 
 add_library(core STATIC ${CORE_SRC_FILES})
+add_library(emucore STATIC ${EMUCORE_SRC_FILES})
 
 add_executable(minimame ${SRC_FILES})
-target_link_libraries(minimame core)
+target_link_libraries(minimame emucore core)
 
 include(BoostTestHelpers.cmake)
 add_boost_test(tests/emu/attotime.cpp core)

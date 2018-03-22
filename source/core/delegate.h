@@ -76,12 +76,11 @@
 #pragma once
 
 // standard C++ includes
+#include <cassert>
 #include <cstring>
 #include <typeinfo>
 #include <utility>
 #include <functional>
-
-#include "emucore.h"	// for assert
 
 //**************************************************************************
 //  MACROS

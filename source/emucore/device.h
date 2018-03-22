@@ -18,10 +18,31 @@
 #include <unordered_map>
 #include <vector>
 
-#include "attotime.h"
+#include "../core/attotime.h"
+#include "../core/macros.h"
 #include "emucore.h"
 
 class save_manager;
+class machine_config;
+class device_interface;
+class device_execute_interface;
+class device_memory_interface;
+class device_state_interface;
+class running_machine;
+class input_device_default;
+class rom_entry;
+class devcb_read_base;
+class devcb_write_base;
+class memory_region;
+class memory_share;
+class memory_bank;
+class ioport_port;
+class validity_checker;
+class emu_timer;
+class device_debug;
+class finder_base;
+class tiny_rom_entry;
+class device_rom_region;
 
 //**************************************************************************
 //  MACROS
@@ -35,17 +56,13 @@ class save_manager;
 //**************************************************************************
 
 // configure devices
-#define MCFG_DEVICE_CLOCK(_clock) \
-	device->set_clock(_clock);
-#define MCFG_DEVICE_INPUT_DEFAULTS(_config) \
-	device->set_input_default(DEVICE_INPUT_DEFAULTS_NAME(_config));
+#define MCFG_DEVICE_CLOCK(_clock)           device->set_clock(_clock);
+#define MCFG_DEVICE_INPUT_DEFAULTS(_config) device->set_input_default(DEVICE_INPUT_DEFAULTS_NAME(_config));
 
 #define DECLARE_READ_LINE_MEMBER(name)      int  name()
 #define READ_LINE_MEMBER(name)              int  name()
 #define DECLARE_WRITE_LINE_MEMBER(name)     void name(ATTR_UNUSED int state)
 #define WRITE_LINE_MEMBER(name)             void name(ATTR_UNUSED int state)
-
-
 
 //**************************************************************************
 //  GLOBAL VARIABLES
@@ -308,7 +325,7 @@ constexpr auto driver_device_creator = &emu::detail::driver_tag_func<DriverClass
 
 
 // exception classes
-class device_missing_dependencies : public emu_exception { };
+class device_missing_dependencies : public std::exception { };
 
 
 // timer IDs for devices
@@ -447,8 +464,10 @@ public:
 	const machine_config &mconfig() const { return m_machine_config; }
 	const input_device_default *input_ports_defaults() const { return m_input_defaults; }
 	const std::vector<rom_entry> &rom_region_vector() const;
-//	const tiny_rom_entry *rom_region() const { return device_rom_region(); }
-//	ioport_constructor input_ports() const { return device_input_ports(); }
+	/* TODO
+	const tiny_rom_entry *rom_region() const { return device_rom_region(); }
+	ioport_constructor input_ports() const { return device_input_ports(); }
+	*/
 	std::uint8_t default_bios() const { return m_default_bios; }
 	std::uint8_t system_bios() const { return m_system_bios; }
 	const std::string &default_bios_tag() const { return m_default_bios_tag; }
@@ -518,13 +537,13 @@ public:
 	void timer_set(const attotime &duration, device_timer_id id = 0, int param = 0, void *ptr = nullptr);
 	void synchronize(device_timer_id id = 0, int param = 0, void *ptr = nullptr) { timer_set(attotime::zero, id, param, ptr); }
 	void timer_expired(emu_timer &timer, device_timer_id id, int param, void *ptr) { device_timer(timer, id, param, ptr); }
-
+/*
 	// state saving interfaces
 	template<typename ItemType>
 	void ATTR_COLD save_item(ItemType &value, const char *valname, int index = 0) { assert(m_save != nullptr); m_save->save_item(this, name(), tag(), index, value, valname); }
 	template<typename ItemType>
 	void ATTR_COLD save_pointer(ItemType *value, const char *valname, std::uint32_t count, int index = 0) { assert(m_save != nullptr); m_save->save_pointer(this, name(), tag(), index, value, valname, count); }
-
+*/
 	// debugging
 	device_debug *debug() const { return m_debug.get(); }
 //	offs_t safe_pc() const;

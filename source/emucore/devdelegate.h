@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include "delegate.h"
+#include "../core/delegate.h"
 #include "device.h"
 
 // device_delegate_helper does non-template work

@@ -32,8 +32,7 @@
 
 // ======================> simple_list
 
-// a simple_list is a singly-linked list whose 'next' pointer is owned
-// by the object
+/** a simple_list is a singly-linked list whose 'next' pointer is owned by the object. */
 template<class _ElementType>
 class simple_list final
 {
@@ -255,7 +254,7 @@ public:
 	// remove the given object and free its memory
 	void remove(_ElementType &object) noexcept
 	{
-// ***FIXME***		global_free(&detach(object));
+		global_free(&detach(object));
 	}
 
 	// find an object by index in the list
@@ -290,9 +289,9 @@ private:
 
 // ======================> simple_list_wrapper
 
-// a simple_list_wrapper wraps an existing object with a next pointer so it
-// can live in a simple_list without requiring the object to have a next
-// pointer
+/** a simple_list_wrapper wraps an existing object with a next pointer so it
+ can live in a simple_list without requiring the object to have a next
+ pointer. */
 template<class _ObjectType>
 class simple_list_wrapper
 {
@@ -323,7 +322,7 @@ private:
 
 // ======================> fixed_allocator
 
-// a fixed_allocator is a simple class that maintains a free pool of objects
+/** A fixed_allocator is a simple class that maintains a free pool of objects. */
 template<class _ItemType>
 class fixed_allocator
 {
@@ -361,7 +360,7 @@ private:
 
 namespace util {
 
-// wraps an existing sequence of values
+/** wraps an existing sequence of values. */
 template<typename T>
 class contiguous_sequence_wrapper
 {
@@ -428,14 +427,17 @@ private:
 };
 
 
-// LRU cache that behaves like std::map with differences:
-// * drops least-recently used items if necessary on insert to prevent size from exceeding max_size
-// * operator[], at, insert, emplace and find freshen existing entries
-// * iterates from least- to most-recently used rather than in order by key
-// * iterators to dropped items are invalidated
-// * not all map interfaces implemented
-// * copyable and swappable but not movable
-// * swap may invalidate past-the-end iterator, other iterators refer to new container
+/**
+ *  An LRU cache that behaves like std::map with differences.
+ * 
+ * * drops least-recently used items if necessary on insert to prevent size from exceeding max_size
+ *  * operator[], at, insert, emplace and find freshen existing entries
+ * * iterates from least- to most-recently used rather than in order by key
+ * * iterators to dropped items are invalidated
+ * * not all map interfaces implemented
+ * * copyable and swappable but not movable
+ * * swap may invalidate past-the-end iterator, other iterators refer to new container.
+ */
 template <typename Key, typename T, typename Compare = std::less<Key>, class Allocator = std::allocator<std::pair<Key const, T> > >
 class lru_cache_map
 {
@@ -804,7 +806,7 @@ void swap(lru_cache_map<Key, T, Compare, Allocator> &lhs, lru_cache_map<Key, T, 
 	lhs.swap(rhs);
 }
 
-
+/** A FIFO array. */
 template <typename T, std::size_t N, bool WriteWrap = false, bool ReadWrap = WriteWrap>
 class fifo : protected std::array<T, N>
 {
