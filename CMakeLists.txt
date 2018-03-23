@@ -51,6 +51,7 @@ set(CORE_SRC_FILES
 set(EMUCORE_SRC_FILES
   source/emucore/devdelegate.cpp
   source/emucore/devdelegate.h
+  source/emucore/memory/memory_manager.cpp
 )
 
 set(SRC_FILES

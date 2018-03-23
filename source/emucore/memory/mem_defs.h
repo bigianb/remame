@@ -17,3 +17,21 @@ enum class read_or_write
 	WRITE = 2,
 	READWRITE = 3
 };
+
+// banking constants
+const int BANK_ENTRY_UNSPECIFIED = -1;
+
+// other address map constants
+const int MEMORY_BLOCK_CHUNK = 65536;                   // minimum chunk size of allocated memory blocks
+
+														// static data access handler constants
+enum
+{
+	STATIC_INVALID = 0,                                 // invalid - should never be used
+	STATIC_BANK1 = 1,                                   // first memory bank
+	STATIC_BANKMAX = 0xfb,                              // last memory bank
+	STATIC_NOP,                                         // NOP - reads = unmapped value; writes = no-op
+	STATIC_UNMAP,                                       // unmapped - same as NOP except we log errors
+	STATIC_WATCHPOINT,                                  // watchpoint - used internally
+	STATIC_COUNT                                        // total number of static handlers
+};

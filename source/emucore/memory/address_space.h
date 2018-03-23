@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../emumem.h"
+#include "emumem.h"
+#include "direct_read_data.h"
 
 // address_space holds live information about an address space
 class address_space

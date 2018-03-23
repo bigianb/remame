@@ -1,6 +1,8 @@
 #pragma once
 
 #include <cstdint>
+#include <vector>
+#include <memory>
 #include <unordered_map>
 
 #include "../../core/endian.h"
@@ -17,7 +19,6 @@ class device_memory_interface;
 class memory_manager
 {
 	friend class address_space;
-	//friend memory_region::memory_region(running_machine &machine, const char *name, u32 length, u8 width, endianness_t endian);
 public:
 	// construction/destruction
 	memory_manager(running_machine &machine);
@@ -46,12 +47,12 @@ private:
 	running_machine &           m_machine;              // reference to the machine
 	bool                        m_initialized;          // have we completed initialization?
 
-	std::uint8_t *                        m_bank_ptr[TOTAL_MEMORY_BANKS];  // array of bank pointers
+	std::uint8_t *              m_bank_ptr[TOTAL_MEMORY_BANKS];  // array of bank pointers
 
 	std::vector<std::unique_ptr<memory_block>>   m_blocklist;            // head of the list of memory blocks
 
 	std::unordered_map<std::string,std::unique_ptr<memory_bank>>    m_banklist;             // data gathered for each bank
-	std::uint16_t                      m_banknext;             // next bank to allocate
+	std::uint16_t                                                   m_banknext;             // next bank to allocate
 
 	std::unordered_map<std::string, std::unique_ptr<memory_share>>   m_sharelist;            // map for share lookups
 

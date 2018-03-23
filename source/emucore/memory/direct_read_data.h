@@ -78,3 +78,74 @@ private:
 	std::list<direct_range>     m_rangelist[TOTAL_MEMORY_BANKS];  // list of ranges for each entry
 };
 
+
+//-------------------------------------------------
+//  read_ptr - return a pointer to valid RAM
+//  referenced by the address, or nullptr if no RAM
+//  backing that address
+//-------------------------------------------------
+
+template<int AddrShift> inline void *direct_read_data<AddrShift>::read_ptr(offs_t address, offs_t directxor)
+{
+	if (address_is_valid(address))
+		return &m_ptr[offset_to_byte(((address ^ directxor) & m_addrmask))];
+	return nullptr;
+}
+
+
+//-------------------------------------------------
+//  read_byte - read a byte via the
+//  direct_read_data class
+//-------------------------------------------------
+
+template<int AddrShift> inline std::uint8_t direct_read_data<AddrShift>::read_byte(offs_t address, offs_t directxor)
+{
+	if (AddrShift <= -1)
+		fatalerror("Can't direct_read_data::read_byte on a memory space with address shift %d", AddrShift);
+	if (address_is_valid(address))
+		return m_ptr[offset_to_byte((address ^ directxor) & m_addrmask)];
+	return m_space.read_byte(address);
+}
+
+
+//-------------------------------------------------
+//  read_word - read a word via the
+//  direct_read_data class
+//-------------------------------------------------
+
+template<int AddrShift> inline std::uint16_t direct_read_data<AddrShift>::read_word(offs_t address, offs_t directxor)
+{
+	if (AddrShift <= -2)
+		fatalerror("Can't direct_read_data::read_word on a memory space with address shift %d", AddrShift);
+	if (address_is_valid(address))
+		return *reinterpret_cast<std::uint16_t *>(&m_ptr[offset_to_byte((address ^ directxor) & m_addrmask)]);
+	return m_space.read_word(address);
+}
+
+
+//-------------------------------------------------
+//  read_dword - read a dword via the
+//  direct_read_data class
+//-------------------------------------------------
+
+template<int AddrShift> inline std::uint32_t direct_read_data<AddrShift>::read_dword(offs_t address, offs_t directxor)
+{
+	if (AddrShift <= -3)
+		fatalerror("Can't direct_read_data::read_dword on a memory space with address shift %d", AddrShift);
+	if (address_is_valid(address))
+		return *reinterpret_cast<std::uint32_t *>(&m_ptr[offset_to_byte((address ^ directxor) & m_addrmask)]);
+	return m_space.read_dword(address);
+}
+
+
+//-------------------------------------------------
+//  read_qword - read a qword via the
+//  direct_read_data class
+//-------------------------------------------------
+
+template<int AddrShift> inline std::uint64_t direct_read_data<AddrShift>::read_qword(offs_t address, offs_t directxor)
+{
+	if (address_is_valid(address))
+		return *reinterpret_cast<std::uint64_t *>(&m_ptr[offset_to_byte((address ^ directxor) & m_addrmask)]);
+	return m_space.read_qword(address);
+}
