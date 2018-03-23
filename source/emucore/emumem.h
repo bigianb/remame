@@ -11,7 +11,8 @@
 #pragma once
 #include <cstdint>
 #include "devdelegate.h"
-#include "core/endian.h"
+#include "../core/endian.h"
+#include "../core/exceptions.h"
 
 using s8 = std::int8_t;
 using u8 = std::uint8_t;
