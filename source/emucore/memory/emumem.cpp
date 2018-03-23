@@ -179,10 +179,7 @@
 #include <list>
 #include <map>
 
-#include "emu.h"
-#include "emuopts.h"
-#include "debug/debugcpu.h"
-
+#include "emumem.h"
 
 //**************************************************************************
 //  DEBUGGING
@@ -197,7 +194,6 @@
 /*-------------------------------------------------
     core_i64_hex_format - i64 format printf helper
 -------------------------------------------------*/
-
 static char *core_i64_hex_format(u64 value, u8 mindigits)
 {
 	static char buffer[16][64];
@@ -223,12 +219,6 @@ static char *core_i64_hex_format(u64 value, u8 mindigits)
 	return bufbase;
 }
 
-
-
-//**************************************************************************
-//  CONSTANTS
-//**************************************************************************
-
 // banking constants
 const int BANK_ENTRY_UNSPECIFIED = -1;
 
@@ -247,16 +237,7 @@ enum
 	STATIC_COUNT                                        // total number of static handlers
 };
 
-
-
-//**************************************************************************
-//  TYPE DEFINITIONS
-//**************************************************************************
-
-
-// ======================> handler_entry
-
-// a handler entry contains information about a memory handler
+/* Contains information about a memory handler. */
 class handler_entry
 {
 	DISABLE_COPYING(handler_entry);

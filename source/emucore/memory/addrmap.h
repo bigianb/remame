@@ -12,9 +12,14 @@
 
 #include <cstdint>
 
-class device_t;
+#include "../../core/endian.h"
+#include "../../core/memcore.h"
+#include "../../core/coretmpl.h"
 
-//#include "emumem.h"
+using u8 = std::uint8_t;
+using u64 = std::uint64_t;
+
+class device_t;
 
 //**************************************************************************
 //  CONSTANTS
@@ -62,7 +67,7 @@ public:
 
 // ======================> address_map_entry
 
-/** address_map_entry is a linked list element describing one address range in a map. */
+/** A linked list element describing one address range in a map. */
 class address_map_entry
 {
 	friend class address_map;
