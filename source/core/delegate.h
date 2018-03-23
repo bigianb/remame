@@ -142,10 +142,7 @@ class delegate_generic_class { };
 class delegate_generic_class;
 #endif
 
-
-// ======================> delegate_late_bind
-
-// simple polymorphic class that must be mixed into any object that is late-bound
+/** simple polymorphic class that must be mixed into any object that is late-bound. */
 class delegate_late_bind
 {
 public:
@@ -153,10 +150,7 @@ public:
 	virtual ~delegate_late_bind() { }
 };
 
-
-// ======================> binding_type_exception
-
-// exception that is thrown when a bind fails the dynamic_cast
+/** exception that is thrown when a bind fails the dynamic_cast. */
 class binding_type_exception : public std::exception
 {
 public:

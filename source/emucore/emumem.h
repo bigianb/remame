@@ -11,6 +11,7 @@
 #pragma once
 #include <cstdint>
 #include "devdelegate.h"
+#include "core/endian.h"
 
 using s8 = std::int8_t;
 using u8 = std::uint8_t;
@@ -54,6 +55,11 @@ class address_table_write;
 
 // offsets and addresses are 32-bit (for now...)
 typedef std::uint32_t offs_t;
+
+class address_map;
+class address_map_entry;
+class address_space;
+class memory_manager;
 
 // address map constructors are delegates that build up an address_map
 using address_map_constructor = named_delegate<void (address_map &)>;
@@ -103,7 +109,7 @@ typedef device_delegate<void (address_space &, offs_t)> setoffset_delegate;
 
 // ======================> direct_read_data
 
-// direct_read_data contains state data for direct read access
+/** direct_read_data contains state data for direct read access. */
 template<int AddrShift> class direct_read_data
 {
 	friend class address_table;

@@ -333,7 +333,7 @@ typedef std::uint32_t device_timer_id;
 
 // ======================> device_t
 
-// device_t represents a device
+/** device_t represents a device. */
 class device_t : public delegate_late_bind
 {
 	DISABLE_COPYING(device_t);
@@ -640,7 +640,7 @@ private:
 
 // ======================> device_interface
 
-// device_interface represents runtime information for a particular device interface
+/** device_interface represents runtime information for a particular device interface. */
 class device_interface
 {
 	DISABLE_COPYING(device_interface);
@@ -689,7 +689,7 @@ protected:
 
 // ======================> device_iterator
 
-// helper class to iterate over the hierarchy of devices depth-first
+/** helper class to iterate over the hierarchy of devices depth-first. */
 class device_iterator
 {
 public:
@@ -821,7 +821,7 @@ private:
 
 // ======================> device_type_iterator
 
-// helper class to find devices of a given type in the device hierarchy
+/** helper class to find devices of a given type in the device hierarchy. */
 template <class DeviceType, class DeviceClass = DeviceType>
 class device_type_iterator
 {

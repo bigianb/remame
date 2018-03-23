@@ -12,7 +12,9 @@
 
 #include <cstdint>
 
-#include "emumem.h"
+class device_t;
+
+//#include "emumem.h"
 
 //**************************************************************************
 //  CONSTANTS
@@ -38,7 +40,7 @@ enum map_handler_type
 //  TYPE DEFINITIONS
 //**************************************************************************
 
-// address map handler data
+/** address map handler data. */
 class map_handler_data
 {
 public:
@@ -60,7 +62,7 @@ public:
 
 // ======================> address_map_entry
 
-// address_map_entry is a linked list element describing one address range in a map
+/** address_map_entry is a linked list element describing one address range in a map. */
 class address_map_entry
 {
 	friend class address_map;
@@ -177,7 +179,7 @@ private:
 
 // ======================> address_map
 
-// address_map holds global map parameters plus the head of the list of entries
+/** address_map holds global map parameters plus the head of the list of entries. */
 class address_map
 {
 public:

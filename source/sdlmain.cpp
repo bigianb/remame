@@ -1,6 +1,6 @@
 
-//#include "core/emumem.h"
-//#include "core/addrmap.h"
+#include "emucore/emumem.h"
+//#include "emucore/addrmap.h"
 
 int main(int argc, char** argv)
 {
