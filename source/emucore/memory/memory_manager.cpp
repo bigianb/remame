@@ -1,6 +1,7 @@
 
 #include "memory_manager.h"
 #include "dimemory.h"
+#include "address_space_specific.h"
 
 class address_space_config;
 
