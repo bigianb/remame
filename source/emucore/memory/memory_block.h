@@ -36,6 +36,6 @@ private:
 	address_space &         m_space;                // which address space are we associated with?
 	offs_t                  m_addrstart, m_addrend; // start/end for verifying a match
 	std::uint8_t *          m_data;                 // pointer to the data for this block
-	std::vector<std::uint8_t>  m_allocated;            // pointer to the actually allocated block
+	std::vector<std::uint8_t>  m_allocated;         // pointer to the actually allocated block
 };
 
