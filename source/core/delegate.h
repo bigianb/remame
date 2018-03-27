@@ -609,3 +609,25 @@ public:
 	template<class _FunctionClass> delegate(typename basetype::template traits<_FunctionClass>::static_ref_func_type funcptr,_FunctionClass *object) : basetype(funcptr, object) { }
 	delegate &operator=(const basetype &src) { *static_cast<basetype *>(this) = src; return *this; }
 };
+
+template<typename _Signature>
+class named_delegate : public delegate<_Signature>
+{
+	typedef delegate<_Signature> basetype;
+
+public:
+	// create a standard set of constructors
+	named_delegate() : basetype(), m_name(nullptr) { }
+	explicit named_delegate(const basetype &src) : basetype(src), m_name(src.m_name) { }
+	named_delegate(const basetype &src, delegate_late_bind &object) : basetype(src, object), m_name(src.m_name) { }
+	template<class _FunctionClass> named_delegate(typename basetype::template traits<_FunctionClass>::member_func_type funcptr, const char *name, _FunctionClass *object) : basetype(funcptr, object), m_name(name) { }
+	template<class _FunctionClass> named_delegate(typename basetype::template traits<_FunctionClass>::const_member_func_type funcptr, const char *name, _FunctionClass *object) : basetype(funcptr, object), m_name(name) { }
+	explicit named_delegate(std::function<_Signature> funcptr, const char *name) : basetype(funcptr), m_name(name) { }
+	template<class _FunctionClass> named_delegate(typename basetype::template traits<_FunctionClass>::static_func_type funcptr, const char *name, _FunctionClass *object) : basetype(funcptr, object), m_name(name) { }
+	template<class _FunctionClass> named_delegate(typename basetype::template traits<_FunctionClass>::static_ref_func_type funcptr, const char *name, _FunctionClass *object) : basetype(funcptr, object), m_name(name) { }
+	named_delegate &operator=(const basetype &src) { *static_cast<basetype *>(this) = src; m_name = src.m_name; return *this; }
+
+	const char *name() const { return m_name; }
+private:
+	const char *                m_name;             // name string
+};

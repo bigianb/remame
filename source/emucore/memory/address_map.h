@@ -219,6 +219,10 @@ public:
 };
 
 
+// address map constructors are delegates that build up an address_map
+using address_map_constructor = named_delegate<void(address_map &)>;
+
+
 //**************************************************************************
 //  ADDRESS MAP MACROS
 //**************************************************************************
