@@ -9,7 +9,7 @@ compile_commands.json
 CTestTestfile.cmake
 .DS_Store
 build
-
+_site
 /CMakeSettings.json
 /.vs
 .vscode
