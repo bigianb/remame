@@ -150,20 +150,24 @@ static void construct_ioport_sidetrac(device_t &owner, ioport_list &portlist, st
 	ioport_configurer configurer(owner, portlist, errorbuf);
 
 	PORT_START("DSW")
+        // mask, default, name. Mask is used to determine position in the byte.
 	PORT_DIPNAME( 0x03, 0x00, DEF_STR( Lives ) ) PORT_DIPLOCATION("SW1:1,2")
 	PORT_DIPSETTING(    0x00, "2" )
 	PORT_DIPSETTING(    0x01, "3" )
 	PORT_DIPSETTING(    0x02, "4" )
 	PORT_DIPSETTING(    0x03, "5" )
+
 	PORT_DIPNAME( 0x0c, 0x04, DEF_STR( Coinage ) ) PORT_DIPLOCATION("SW1:3,4")
 	PORT_DIPSETTING(    0x08, DEF_STR( 2C_1C ) )
 	/* 0x0c same as 0x08 */
 	PORT_DIPSETTING(    0x04, DEF_STR( 1C_1C ) )
 	PORT_DIPSETTING(    0x00, DEF_STR( 1C_2C ) )
-	PORT_DIPNAME( 0x10, 0x10, "Top Score Award" ) PORT_DIPLOCATION("SW1:5")
+	
+        PORT_DIPNAME( 0x10, 0x10, "Top Score Award" ) PORT_DIPLOCATION("SW1:5")
 	PORT_DIPSETTING(    0x00, DEF_STR( Off ) )
 	PORT_DIPSETTING(    0x10, DEF_STR( On ) )
-	PORT_BIT( 0xe0, IP_ACTIVE_HIGH, IPT_UNUSED )
+	
+        PORT_BIT( 0xe0, IP_ACTIVE_HIGH, IPT_UNUSED )
 
 	PORT_START("IN0")
 	PORT_BIT( 0x01, IP_ACTIVE_LOW, IPT_START1 )
