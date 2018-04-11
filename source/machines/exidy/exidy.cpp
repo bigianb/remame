@@ -24,20 +24,7 @@ Side Trak            1979  6502   STL, STA
     0000-00FF R/W Zero Page RAM
     0100-01FF R/W Stack RAM
     0200-03FF R/W Scratchpad RAM
-    0800-3FFF  R  Program ROM              (Targ, Spectar only)
-    1A00       R  PX3 (Player 2 inputs)    (Fax only)
-                  bit 4  D
-                  bit 5  C
-                  bit 6  B
-                  bit 7  A
-    1C00       R  PX2 (Player 1 inputs)    (Fax only)
-                  bit 0  2 player start
-                  bit 1  1 player start
-                  bit 4  D
-                  bit 5  C
-                  bit 6  B
-                  bit 7  A
-    2000-3FFF  R  Banked question ROM      (Fax only)
+
     4000-43FF R/W Screen RAM
     4800-4FFF R/W Character Generator RAM (except Pepper II and Fax)
     5000       W  Motion Object 1 Horizontal Position Latch (sprite 1 X)
@@ -78,7 +65,6 @@ Side Trak            1979  6502   STL, STA
                   bit 1  red button
                   bit 0  yellow button
     52XX      R/W Audio/Color Board Communications
-    6000-6FFF R/W Character Generator RAM (Pepper II, Fax only)
     8000-FFF9  R  Program memory space
     FFFA-FFFF  R  Interrupt and Reset Vectors
 
@@ -100,23 +86,9 @@ Side Trak            1979  6502   STL, STA
     3003      Bit 0..2 Channel 3 Amplitude
     5800-7FFF ROM
 
-    Targ:
-    5200    Sound board control
-            bit 0 Music
-            bit 1 Shoot
-            bit 2 unused
-            bit 3 Swarn
-            bit 4 Sspec
-            bit 5 crash
-            bit 6 long
-            bit 7 game
-
     5201    Sound board control
             bit 0 note
             bit 1 upper
-
-    MouseTrap Digital Sound:
-    0000-3FFF ROM
 
     IO:
         A7 = 0: R Communication from sound processor
